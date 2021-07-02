@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="zedcrypt"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/sc2135-047/CLionProjects/zedcrypt/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/sc2135-047/CLionProjects/zedcrypt/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/sc2135-047/CLionProjects/zedcrypt/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/sc2135-047/CLionProjects/zedcrypt/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/sc2135-047/CLionProjects/zedcrypt/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/sc2135-047/CLionProjects/zedcrypt/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/sc2135-047/CLionProjects/zedcrypt/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/sc2135-047/CLionProjects/zedcrypt/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/sc2135-047/CLionProjects/zedcrypt/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/sc2135-047/CLionProjects/zedcrypt/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/sc2135-047/CLionProjects/zedcrypt/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/sc2135-047/CLionProjects/zedcrypt/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/sc2135-047/CLionProjects/zedcrypt/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/sc2135-047/CLionProjects/zedcrypt/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/sc2135-047/CLionProjects/zedcrypt/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="zedcrypt">
+				<Option output="/Users/sc2135-047/CLionProjects/zedcrypt/cmake-build-debug/zedcrypt" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/sc2135-047/CLionProjects/zedcrypt/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/12.0.5/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/sc2135-047/CLionProjects/zedcrypt/cmake-build-debug/Makefile&quot;  VERBOSE=1 zedcrypt"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/sc2135-047/CLionProjects/zedcrypt/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/sc2135-047/CLionProjects/zedcrypt/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/sc2135-047/CLionProjects/zedcrypt/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="zedcrypt/fast">
+				<Option output="/Users/sc2135-047/CLionProjects/zedcrypt/cmake-build-debug/zedcrypt" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/sc2135-047/CLionProjects/zedcrypt/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/12.0.5/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/sc2135-047/CLionProjects/zedcrypt/cmake-build-debug/Makefile&quot;  VERBOSE=1 zedcrypt/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/sc2135-047/CLionProjects/zedcrypt/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/sc2135-047/CLionProjects/zedcrypt/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/sc2135-047/CLionProjects/zedcrypt/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/sc2135-047/CLionProjects/zedcrypt/aes/aes.c">
+			<Option target="zedcrypt"/>
+		</Unit>
+		<Unit filename="/Users/sc2135-047/CLionProjects/zedcrypt/aes/aes.h">
+			<Option target="zedcrypt"/>
+		</Unit>
+		<Unit filename="/Users/sc2135-047/CLionProjects/zedcrypt/main.c">
+			<Option target="zedcrypt"/>
+		</Unit>
+		<Unit filename="/Users/sc2135-047/CLionProjects/zedcrypt/mode/mode.c">
+			<Option target="zedcrypt"/>
+		</Unit>
+		<Unit filename="/Users/sc2135-047/CLionProjects/zedcrypt/mode/mode.h">
+			<Option target="zedcrypt"/>
+		</Unit>
+		<Unit filename="/Users/sc2135-047/CLionProjects/zedcrypt/sha/consts.h">
+			<Option target="zedcrypt"/>
+		</Unit>
+		<Unit filename="/Users/sc2135-047/CLionProjects/zedcrypt/sha/sha.h">
+			<Option target="zedcrypt"/>
+		</Unit>
+		<Unit filename="/Users/sc2135-047/CLionProjects/zedcrypt/sha/sha12.c">
+			<Option target="zedcrypt"/>
+		</Unit>
+		<Unit filename="/Users/sc2135-047/CLionProjects/zedcrypt/sha/sha35.c">
+			<Option target="zedcrypt"/>
+		</Unit>
+		<Unit filename="/Users/sc2135-047/CLionProjects/zedcrypt/types.h">
+			<Option target="zedcrypt"/>
+		</Unit>
+		<Unit filename="/Users/sc2135-047/CLionProjects/zedcrypt/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

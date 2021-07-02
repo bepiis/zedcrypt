@@ -1,0 +1,4 @@
+"/Users/sc2135-047/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/211.7442.42/CLion.app/Contents/bin/cmake/mac/bin/cmake" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/sc2135-047/CLionProjects/zedcrypt
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/sc2135-047/CLionProjects/zedcrypt/cmake-build-debug

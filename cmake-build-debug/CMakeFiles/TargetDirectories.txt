@@ -1,0 +1,3 @@
+/Users/sc2135-047/CLionProjects/zedcrypt/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/sc2135-047/CLionProjects/zedcrypt/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/sc2135-047/CLionProjects/zedcrypt/cmake-build-debug/CMakeFiles/zedcrypt.dir
