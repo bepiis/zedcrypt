@@ -25,25 +25,85 @@
 // ECB decryption: P_j = CIPH^-1_k(C_j)
 // both for j = 1 to n
 
-void mode_init(state st, byte blk_size, byte key_size, uint64_t mlen, void (*fp)(byte[], byte[], const byte[])){
+/// @return -1: msg length is larger than block size
+/// @return -2: msg length is equal to block size. Add padded block to end of msg array
+/// @return 0: msg was padded
+int pad_msg(byte msg[], byte msg_len, byte blk_size){
+    byte idx = msg_len;
+    byte left;
+
+    if((left = blk_size - msg_len) < 0){
+        return -1;
+    } else if(left == 0){
+        return -2;
+    }
+
+    msg[idx++] = 0x80;
+
+    for(; idx < blk_size; idx++){
+        msg[idx] = 0x0;
+    }
+    return 0;
+}
+
+// dblblk[] needs to be 2*blk_size ie. the contents of the last two blocks
+byte *unpad_msg(const byte dblblk[], byte blk_size, byte num_blks, int *ret_len){
+    byte *ret, it, fnd;
+
+    it = 2 * blk_size - 1;
+    fnd = -1;
+
+    while(it >= 0){
+        if(dblblk[it] == 0x1){
+            fnd = it;
+            break;
+        }
+        it--;
+    }
+
+    if(fnd < 0){
+        *ret_len = -1;
+        return NULL;
+    }
+
+    ret = malloc(fnd);
+    memcpy(ret, dblblk, fnd);
+
+    *ret_len = fnd;
+    return ret;
+}
+
+byte *get_padded_blk(byte blk_size){
+
+}
+
+void mode_init(state st, lword totlen, byte blk_size, byte key_size, void (*fp)(byte[], byte[], const byte[])){
     st->mlen = 0;
     st->tlen = 0;
 
     st->fp = fp;
 
-    st->ciph = malloc(blk_size);
+    //TODO: free
     st->blk = malloc(blk_size);
-
+    st->ciph = malloc(blk_size);
+    st->out = malloc(totlen);
+    st->key = malloc(key_size);
 }
 
-void mode_update(state st, byte msg[], uint64_t mlen, byte blk_size){
+void mode_update(state st, const byte msg[], lword mlen, byte blk_size){
     for(unsigned i=0; i < mlen; i++){
         st->blk[st->mlen++] = msg[i];
 
         if(st->mlen == blk_size){
             st->fp(st->blk, st->ciph, st->key);
 
-            st->tlen += blk_size * 8;
+
+            st->tlen += blk_size;
+
+            for(unsigned c=st->tlen - blk_size, h=0; h < blk_size; c++, h++){
+                st->out[c] = st->ciph[h];
+            }
+
             st->mlen = 0;
         }
     }

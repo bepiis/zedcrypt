@@ -12,7 +12,7 @@
 #define sig0(t)  (f0(t, 1, 8, 7))
 #define sig1(t)  (f1(t, 19, 61, 6))
 
-void schedule35_init(lword wblk[], byte bblk[]){
+void schedule35_init(lword wblk[], const byte bblk[]){
 
     lword p1, p2, i, n;
     for(i = n = 0; i < 16; i++, n+=8){

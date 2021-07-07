@@ -66,12 +66,12 @@ void sub_word(word *w){
 
     for(byte j=0, m=24; j < 4; j++, m-=8){
         inter = y >> m;
-        *w |= (sbox[((inter) & up) >> 4][inter & lo]) << m;
+        *w |= (sbox[(inter & up) >> 4][inter & lo]) << m;
     }
 }
 
 /*
-    substiutes bytes in state by using upper nibble of byte to reference
+    substitutes bytes in state by using upper nibble of byte to reference
     row of sbox and lower nibble to reference col of sbox or invsbox:
 
     0xfe --> box[f][e]
@@ -89,11 +89,11 @@ void sub_bytes(state *st, byte inv){
     free(tmp);
 }
 
-void rot_row(state *st, state *tmp, byte r, byte c, byte s){
+static inline void rot_row(state *st, state *tmp, byte r, byte c, byte s){
     (*st)[r][c] = (*tmp)[r][s];
 }
 
-void rot_row_inv(state *st, state *tmp, byte r, byte c, byte s){
+static inline void rot_row_inv(state *st, state *tmp, byte r, byte c, byte s){
     (*st)[r][s] = (*tmp)[r][c];
 }
 
@@ -173,7 +173,7 @@ void mix_cols(state *st, byte inv){
     adds round_key modulo m(x) to columns of state
     round key chosen is dependent on Nb and the current round.
 
-    note: having round_keys as arrays of bytes requires less bitwise arithmatic,
+    note: having round_keys as arrays of bytes requires less bitwise arithmetic,
           but i chose to keep them as 32-bit words when implementing.
 
     could cut down on computation by defining round key in terms of bytes
@@ -187,11 +187,12 @@ void add_round_key(byte round, state *st, const word round_key[]){
         //printf("round key: %x\n", round_key[l + c]);
 
         for(byte r=0, s=24; r < 4; s-=8, r++){
-            //printf("%x, %x\n", (*st)[r][c], (round_key[l + c] & m) >> s);
+      //      printf("%x, %x\n", (*st)[r][c], (round_key[l + c] & m) >> s);
             (*st)[r][c] ^= (round_key[l + c] & m) >> s;
             m >>= 8;
         }
     }
+    //printf("\n");
 }
 
 #define rot_word(w) (((w) << 8) | ((w) >> (32 - 8)))
@@ -215,7 +216,7 @@ void key_expand(word round_key[], const byte key[], const struct key_round *kr){
     // convert bytes to words
     //printf("Copy key into first %d round keys: \n", kr->Nk);
     while(i < kr->Nk){
-        round_key[i] = b2w(key, m, m+1, m+2, m+3) & WRD_MAX;
+        round_key[i] = b2w(key, m, m+1, m+2, m+3) & WRD_MAX
         //printf("w[%d] = %x   ", i, round_key[i]);
         i++;
         m += 4;
@@ -236,7 +237,7 @@ void key_expand(word round_key[], const byte key[], const struct key_round *kr){
             //printf("sub: %x   ", tmp);
 
             tmp ^= rcon[i/kr->Nk];
-            //printf("rcon: %x   ", tmp);
+          //  printf("rcon: %x   ", tmp);
 
         } else if(kr->Nk > 6 && i % kr->Nk == 4){
             sub_word(&tmp);
@@ -271,8 +272,8 @@ void cipher(byte inp[], byte outp[], const word round_key[], const struct key_ro
 
     add_round_key(round++, &st, round_key);
 
-
     for(;; round++){
+
         sub_bytes(&st, 0);
         rot_rows(&st, 0);
 
@@ -290,6 +291,7 @@ void cipher(byte inp[], byte outp[], const word round_key[], const struct key_ro
 
 void cipher_inv(byte in[], byte out[], const word round_key[], const struct key_round *kr){
     byte round = kr->Nr;
+
     state st;
 
     st_cpy(in, &st, 0);
@@ -316,22 +318,7 @@ const struct key_round kr_192 = {6, 12, 56};
 const struct key_round kr_256 = {8, 14, 60};
 
 const struct key_round *get_k_consts(unsigned k_len){
-    const struct key_round *kr;
-
-    switch(k_len){
-        case 128:
-            kr = &kr_128;
-            break;
-        case 192:
-            kr = &kr_192;
-            break;
-        case 256:
-            kr = &kr_256;
-            break;
-        default:
-            return NULL;
-    }
-    return kr;
+    return !(k_len ^ 128) ? &kr_128 : !(k_len ^ 192) ? &kr_192 : !(k_len ^ 256) ? &kr_256 : NULL;
 }
 
 void AES_do(byte inp[], byte outp[], const byte key[], unsigned k_len, byte inv){

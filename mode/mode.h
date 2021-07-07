@@ -5,17 +5,20 @@
 #ifndef ZEDCRYPT_MODE_H
 #define ZEDCRYPT_MODE_H
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 #include "../types.h"
 
 struct ctx {
     void (*fp)(byte[], byte[], const byte[]);
-    byte *blk, *ciph, *key;
-    uint64_t mlen, tlen;
+    byte *blk, *ciph, *out, *key;
+    lword mlen, tlen;
 };
 
 typedef struct ctx *state;
 
-// converts msg to blocks of blk_len length, pads msg.
-void mode_update(state st, byte msg[], uint64_t mlen, byte blk_size);
+void mode_update(state st, const byte msg[], lword mlen, byte blk_size);
 
 #endif //ZEDCRYPT_MODE_H

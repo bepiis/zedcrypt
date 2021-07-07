@@ -78,7 +78,7 @@ static const word rcon[11] = {0x86, 0x01000000, 0x02000000, 0x04000000, 0x080000
 // multiply in gf(2^n) modulo "mod"
 byte gf2n_mult(int t, int s, int overflow, int mod);
 
-// irriducible polynomial (x^8 + x^4 + x^3 + x + 1)
+// irreducible polynomial (x^8 + x^4 + x^3 + x + 1)
 #define MX 0x11b
 
 /*
